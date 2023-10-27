@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4evty62c10gf"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7s618"]
+[ext_resource type="Texture2D" uid="uid://dgu1qvtect3ps" path="res://assets/PNG/playerShip1_blue.png" id="1_q8sb7"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7s618")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_q8sb7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+polygon = PackedVector2Array(-12, -41, 8, -40, 16, -18, 48, -13, 47, 21, 6, 45, -7, 44, -49, 25, -55, -14, -36, -5)
+
+[node name="RocketContainer" type="Node" parent="."]
