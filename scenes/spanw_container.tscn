@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqcfdjrsuoyrt"]
+
+[ext_resource type="Script" path="res://scripts/Spanw_Container.gd" id="1_s8k66"]
+
+[node name="Spanw_Container" type="Node2D"]
+script = ExtResource("1_s8k66")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawn_Position" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Spawn_Position"]
+position = Vector2(1239, 113)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawn_Position"]
+position = Vector2(1239, 213)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawn_Position"]
+position = Vector2(1239, 313)
+
+[node name="Marker2D4" type="Marker2D" parent="Spawn_Position"]
+position = Vector2(1239, 413)
+
+[node name="Marker2D5" type="Marker2D" parent="Spawn_Position"]
+position = Vector2(1239, 513)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

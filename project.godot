@@ -46,6 +46,12 @@ rigt={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="rocket"
+
 [rendering]
 
 renderer/rendering_method="mobile"

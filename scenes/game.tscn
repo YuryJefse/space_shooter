@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxhturyud4rk8"]
+[gd_scene load_steps=4 format=3 uid="uid://dxhturyud4rk8"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_02086"]
 [ext_resource type="PackedScene" uid="uid://b4evty62c10gf" path="res://scenes/player.tscn" id="1_nq8b8"]
+[ext_resource type="PackedScene" uid="uid://bqcfdjrsuoyrt" path="res://scenes/spanw_container.tscn" id="3_8d6u7"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_02086")
 
 [node name="Player" parent="." instance=ExtResource("1_nq8b8")]
 position = Vector2(521, 252)
+
+[node name="Spanw_Container" parent="." instance=ExtResource("3_8d6u7")]
+
+[connection signal="spawn_enemy" from="Spanw_Container" to="." method="_on_spanw_container_spawn_enemy"]
