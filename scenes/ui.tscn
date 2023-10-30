@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://d3wur84afrshc"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_o7lhd"]
+[ext_resource type="Texture2D" uid="uid://cpmc4pnnny4tp" path="res://assets/Backgrounds/blue.png" id="1_yxlo4"]
+[ext_resource type="FontFile" uid="uid://cdgbljmyv3jxg" path="res://assets/Bonus/kenvector_future_thin.ttf" id="2_1g1ip"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q0mff"]
+content_margin_left = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_mvigr"]
+font = ExtResource("2_1g1ip")
+font_size = 40
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_128h7"]
+content_margin_right = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gox3"]
+font = ExtResource("2_1g1ip")
+font_size = 40
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7lhd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 92.0
+texture = ExtResource("1_yxlo4")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+offset_right = 405.0
+offset_bottom = 92.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_q0mff")
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_mvigr")
+vertical_alignment = 1
+
+[node name="LifesLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -342.0
+offset_bottom = 92.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_128h7")
+text = "Lifes: 3"
+label_settings = SubResource("LabelSettings_2gox3")
+horizontal_alignment = 2
+vertical_alignment = 1

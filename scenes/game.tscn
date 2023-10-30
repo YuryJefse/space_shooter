@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxhturyud4rk8"]
+[gd_scene load_steps=5 format=3 uid="uid://dxhturyud4rk8"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_02086"]
 [ext_resource type="PackedScene" uid="uid://b4evty62c10gf" path="res://scenes/player.tscn" id="1_nq8b8"]
 [ext_resource type="PackedScene" uid="uid://bqcfdjrsuoyrt" path="res://scenes/spanw_container.tscn" id="3_8d6u7"]
+[ext_resource type="PackedScene" uid="uid://d3wur84afrshc" path="res://scenes/ui.tscn" id="4_3pox2"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_02086")
@@ -12,4 +13,11 @@ position = Vector2(521, 252)
 
 [node name="Spanw_Container" parent="." instance=ExtResource("3_8d6u7")]
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="HUD" instance=ExtResource("4_3pox2")]
+offset_left = -1.0
+offset_right = -1.0
+
+[connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="spawn_enemy" from="Spanw_Container" to="." method="_on_spanw_container_spawn_enemy"]

@@ -12,18 +12,18 @@ autostart = true
 [node name="Spawn_Position" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Spawn_Position"]
-position = Vector2(1239, 113)
+position = Vector2(1239, 179)
 
 [node name="Marker2D2" type="Marker2D" parent="Spawn_Position"]
-position = Vector2(1239, 213)
+position = Vector2(1239, 279)
 
 [node name="Marker2D3" type="Marker2D" parent="Spawn_Position"]
-position = Vector2(1239, 313)
+position = Vector2(1239, 379)
 
 [node name="Marker2D4" type="Marker2D" parent="Spawn_Position"]
-position = Vector2(1239, 413)
+position = Vector2(1239, 479)
 
 [node name="Marker2D5" type="Marker2D" parent="Spawn_Position"]
-position = Vector2(1239, 513)
+position = Vector2(1239, 579)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

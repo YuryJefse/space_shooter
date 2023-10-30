@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal took_damage()
+
 @export var SPEED:int = 300.0
 @onready var rocket_container = $RocketContainer
 
@@ -22,7 +24,7 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
-	global_position = global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	global_position = global_position.clamp(Vector2(0, 70), get_viewport_rect().size)
 	
 func create_rocket():
 	can_i_shoot = false
@@ -31,3 +33,9 @@ func create_rocket():
 	rocket_container.add_child(rocket_instance)
 	await get_tree().create_timer(0.20).timeout
 	can_i_shoot = true
+	
+func take_damage():
+	emit_signal("took_damage")
+
+func die():
+	queue_free()
