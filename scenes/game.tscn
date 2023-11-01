@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxhturyud4rk8"]
+[gd_scene load_steps=6 format=3 uid="uid://dxhturyud4rk8"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_02086"]
 [ext_resource type="PackedScene" uid="uid://b4evty62c10gf" path="res://scenes/player.tscn" id="1_nq8b8"]
 [ext_resource type="PackedScene" uid="uid://bqcfdjrsuoyrt" path="res://scenes/spanw_container.tscn" id="3_8d6u7"]
 [ext_resource type="PackedScene" uid="uid://d3wur84afrshc" path="res://scenes/ui.tscn" id="4_3pox2"]
+[ext_resource type="Texture2D" uid="uid://clkpb5inospor" path="res://assets/Backgrounds/black.png" id="5_lk8o2"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_02086")
@@ -18,6 +19,17 @@ position = Vector2(521, 252)
 [node name="UI" parent="HUD" instance=ExtResource("4_3pox2")]
 offset_left = -1.0
 offset_right = -1.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1151, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("5_lk8o2")
+stretch_mode = 1
 
 [connection signal="took_damage" from="Player" to="." method="_on_player_took_damage"]
 [connection signal="spawn_enemy" from="Spanw_Container" to="." method="_on_spanw_container_spawn_enemy"]

@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var player = $Player
 @onready var ui = $HUD/UI
+@onready var parallax_background = $ParallaxBackground
+
+var parallax_speed = 300
 
 var game_over_scene = preload("res://scenes/game_over_ui.tscn")
 
@@ -14,6 +17,11 @@ func _ready():
 	
 	ui.set_points(player_points)
 	ui.set_lifes(player_lifes)
+	
+func _process(delta):
+	parallax_background.offset.x -= parallax_speed * delta
+	if(parallax_background.offset.x <= - get_viewport().get_window().size.x):
+		parallax_background.offset.x = 0
 
 func _on_spanw_container_spawn_enemy(enemy):
 	enemy.connect("give_points", on_give_points)
