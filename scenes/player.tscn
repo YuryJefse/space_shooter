@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4evty62c10gf"]
+[gd_scene load_steps=8 format=3 uid="uid://b4evty62c10gf"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7s618"]
 [ext_resource type="Texture2D" uid="uid://dgu1qvtect3ps" path="res://assets/PNG/playerShip1_blue.png" id="1_q8sb7"]
+[ext_resource type="AudioStream" uid="uid://ga7x840cxjgd" path="res://assets/Bonus/sfx_laser1.ogg" id="3_2xmyd"]
+[ext_resource type="AudioStream" uid="uid://dmwvp06yl3eop" path="res://assets/Bonus/sfx_shieldDown.ogg" id="4_i7u85"]
+
+[sub_resource type="Gradient" id="Gradient_o234e"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ncup"]
+gradient = SubResource("Gradient_o234e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n1lji"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+particle_flag_disable_z = true
+gravity = Vector3(-100, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 150.0
+scale_min = 4.0
+scale_max = 9.0
+color_ramp = SubResource("GradientTexture1D_8ncup")
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -16,3 +36,14 @@ rotation = 1.5708
 polygon = PackedVector2Array(-12, -41, 8, -40, 16, -18, 48, -13, 47, 21, 6, 45, -7, 44, -49, 25, -55, -14, -36, -5)
 
 [node name="RocketContainer" type="Node" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-47, 0)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_n1lji")
+
+[node name="LaiserSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2xmyd")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i7u85")

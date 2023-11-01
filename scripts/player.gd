@@ -3,13 +3,14 @@ extends CharacterBody2D
 signal took_damage()
 
 @export var SPEED:int = 300.0
-@onready var rocket_container = $RocketContainer
 
-var can_i_shoot = true
+@onready var rocket_container:Node = $RocketContainer
+
+var can_i_shoot:bool = true
 
 var rocket_scene:PackedScene = preload("res://scenes/rocket.tscn")
 
-func _physics_process(delta):
+func _physics_process(delta)->void:
 	velocity = Vector2.ZERO
 	if(Input.is_action_pressed("down")):
 		velocity.y += SPEED
@@ -26,16 +27,18 @@ func _physics_process(delta):
 	
 	global_position = global_position.clamp(Vector2(0, 70), get_viewport_rect().size)
 	
-func create_rocket():
+func create_rocket()->void:
+	$LaiserSound.play()
 	can_i_shoot = false
-	var rocket_instance = rocket_scene.instantiate()
+	var rocket_instance:Node2D = rocket_scene.instantiate()
 	rocket_instance.global_position = Vector2(global_position.x + 30, global_position.y)
 	rocket_container.add_child(rocket_instance)
 	await get_tree().create_timer(0.20).timeout
 	can_i_shoot = true
 	
-func take_damage():
+func take_damage()->void:
+	$HitSound.play()
 	emit_signal("took_damage")
 
-func die():
+func die()->void:
 	queue_free()
